@@ -1,0 +1,47 @@
+import { Component, OnInit } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ExpenseService } from '../../services/expense.service';
+import { ProfileService } from '../../services/profile.service';
+
+@Component({
+  selector: 'app-dashboard',
+  standalone: true,
+  imports: [IonicModule, CommonModule, RouterModule],
+  templateUrl: './dashboard.page.html',
+  styleUrls: ['./dashboard.page.scss']
+})
+export class DashboardPage implements OnInit {
+
+  income = 0;
+  expense = 0;
+  balance = 0;
+  activeProfileName = '';
+
+  constructor(
+    private expenseService: ExpenseService,
+    private profileService: ProfileService
+  ) {}
+  
+  ngOnInit() {
+    this.loadSummary();
+    this.loadProfileName();
+  }
+testClick() {
+  alert('CLICK WORKS');
+}
+  loadSummary() {
+    const summary = this.expenseService.getSummary();
+    this.income = summary.income;
+    this.expense = summary.expense;
+    this.balance = summary.balance;
+  }
+
+  loadProfileName() {
+    const profiles = this.profileService.getProfiles();
+    const activeId = this.profileService.getActiveProfile();
+    const profile = profiles.find(p => p.id === activeId);
+    this.activeProfileName = profile?.name || '';
+  }
+}

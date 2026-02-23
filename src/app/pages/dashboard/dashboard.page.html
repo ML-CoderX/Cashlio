@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cashlio</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/profiles" fill="clear">
+        {{ activeProfileName || 'Profile' }}
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [scrollY]="false">
+
+  <button (click)="testClick()">TEST CLICK</button>
+
+  <!-- Income Card -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Total Income</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      ₹ {{ income }}
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Expense Card -->
+  <ion-card>
+    <ion-card-title>Total Expense</ion-card-title>
+    <ion-card-content>
+      ₹ {{ expense }}
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Balance Card -->
+  <ion-card>
+    <ion-card-title>Balance</ion-card-title>
+    <ion-card-content>
+      ₹ {{ balance }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" routerLink="tabs/add">
+    Add Transaction
+  </ion-button>
+
+  <ion-button expand="block" fill="outline" routerLink="/history">
+    View History
+  </ion-button>
+
+</ion-content>
