@@ -42,7 +42,8 @@ export class HistoryPage {
     this.expenseService.deleteExpense(id);
     this.loadExpenses();
   }
-    async downloadPdf() {
+
+  async downloadPdf() {
     if (this.expenses.length === 0) {
       const alert = await this.alertCtrl.create({
         header: 'No Data',
@@ -64,6 +65,7 @@ export class HistoryPage {
       return [
         formatDate(expense.date, 'yyyy-MM-dd', 'en-IN'),
         expense.type === 'credit' ? 'Credit' : 'Debit',
+        expense.category || '-',
         `₹ ${expense.amount.toFixed(2)}`,
         `₹ ${runningBalance.toFixed(2)}`
       ];
@@ -75,7 +77,7 @@ export class HistoryPage {
 
     autoTable(doc, {
       startY: 22,
-      head: [['Date', 'Credit or Debit', 'Amount', 'Balance']],
+      head: [['Date', 'Credit or Debit', 'Category', 'Amount', 'Balance']],
       body: rows,
       styles: { fontSize: 10 },
       headStyles: { fillColor: [51, 102, 204] }
