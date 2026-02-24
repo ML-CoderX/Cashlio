@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+import { ProfileService } from './services/profile.service';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,10 @@ import { RouterModule } from '@angular/router';
     </ion-app>
   `
 })
-export class AppComponent {}
+export class AppComponent {
+  private profileService = inject(ProfileService);
+
+  constructor() {
+    this.profileService.initDefaultProfile();
+  }
+}
