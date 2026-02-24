@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 import { ExpenseService } from '../../services/expense.service';
 import { ProfileService } from '../../services/profile.service';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-expense',
@@ -15,6 +14,9 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./add-expense.page.scss']
 })
 export class AddExpensePage {
+  private expenseService = inject(ExpenseService);
+  private profileService = inject(ProfileService);
+  private router = inject(Router);
 
   amount!: number;
   type: 'credit' | 'debit' = 'debit';
@@ -23,25 +25,18 @@ export class AddExpensePage {
   date = new Date().toISOString();
   activeProfileName = '';
 
-  constructor(
-    private expenseService: ExpenseService,
-    private profileService: ProfileService,
-    private router: Router
-  ) {}
-
   ionViewWillEnter() {
     this.loadProfileName();
   }
 
-  loadProfileName() {
+  private loadProfileName() {
     const profiles = this.profileService.getProfiles();
     const activeId = this.profileService.getActiveProfile();
-    const profile = profiles.find(p => p.id === activeId);
+    const profile = profiles.find((p) => p.id === activeId);
     this.activeProfileName = profile?.name || '';
   }
 
   saveExpense() {
-
     const activeProfile = this.profileService.getActiveProfile();
     if (!activeProfile) return;
 
@@ -56,6 +51,6 @@ export class AddExpensePage {
     };
 
     this.expenseService.addExpense(newExpense);
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/tabs/dashboard']);
   }
 }

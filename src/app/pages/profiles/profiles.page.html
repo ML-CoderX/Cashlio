@@ -4,33 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" [scrollY]="false">
-
+<ion-content class="ion-padding">
   <ion-list>
-
-    <ion-item
-      *ngFor="let profile of profiles"
-      [color]="profile.id === activeProfile ? 'light' : ''">
-
+    <ion-item *ngFor="let profile of profiles" [color]="profile.id === activeProfile ? 'light' : ''">
       <ion-label (click)="switchProfile(profile.id)">
         {{ profile.name }}
       </ion-label>
 
-      <ion-button fill="clear" (click)="renameProfile(profile)">
-        Rename
-      </ion-button>
+      <ion-button fill="clear" (click)="renameProfile(profile)">Rename</ion-button>
 
-      <ion-button fill="clear" color="danger"
-        (click)="deleteProfile(profile)">
+      <ion-button fill="clear" color="danger" (click)="deleteProfile(profile)">
         Delete
       </ion-button>
-
     </ion-item>
-
   </ion-list>
 
-  <ion-button expand="block" (click)="addProfile()">
-    + Add Profile
-  </ion-button>
-
+  <ion-button expand="block" (click)="addProfile()">+ Add Profile</ion-button>
 </ion-content>

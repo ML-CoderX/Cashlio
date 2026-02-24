@@ -7,8 +7,7 @@ import {
   IonTabBar,
   IonTabButton,
   IonIcon,
-  IonLabel,
-  IonRouterOutlet
+  IonLabel
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -22,7 +21,6 @@ import {
     IonTabButton,
     IonIcon,
     IonLabel,
-    IonRouterOutlet
   ],
   templateUrl: './tabs.page.html'
 })
