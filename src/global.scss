@@ -10,20 +10,20 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
+@import '@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+@import '@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/text-transformation.css';
+@import '@ionic/angular/css/flex-utils.css';
 
 /**
  * Ionic Dark Mode
@@ -35,28 +35,3 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
-
-/* Force the active page to the front and make it interactable */
-.ion-page-active {
-  z-index: 101 !important;
-  pointer-events: auto !important;
-  visibility: visible !important;
-}
-
-/* Ensure the router outlet isn't squashed */
-ion-router-outlet {
-  display: block !important;
-  position: relative !important;
-  flex: 1 !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-ion-content {
-  --overflow: hidden;
-  overflow: hidden;
-}
-
-.inner-scroll {
-  overflow: hidden !important;
-}

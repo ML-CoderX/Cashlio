@@ -1,34 +1,29 @@
-import { Component } from '@angular/core';
-import { IonicModule, AlertController } from '@ionic/angular';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ProfileService } from '../../services/profile.service';
-import { ExpenseService } from '../../services/expense.service';
-import { Profile } from '../../models/profile.model';
 import { RouterModule } from '@angular/router';
+import { AlertController, IonicModule } from '@ionic/angular';
+import { ProfileService } from '../../services/profile.service';
+import { Profile } from '../../models/profile.model';
 
 @Component({
   selector: 'app-profiles',
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule, RouterModule],
-  templateUrl: './profiles.page.html',
+  templateUrl: './profiles.page.html'
 })
 export class ProfilesPage {
+  private profileService = inject(ProfileService);
+  private alertCtrl = inject(AlertController);
 
   profiles: Profile[] = [];
   activeProfile!: number;
-
-  constructor(
-    private profileService: ProfileService,
-    private expenseService: ExpenseService,
-    private alertCtrl: AlertController
-  ) {}
 
   ionViewWillEnter() {
     this.loadProfiles();
   }
 
-  loadProfiles() {
+  private loadProfiles() {
     this.profiles = this.profileService.getProfiles();
     this.activeProfile = this.profileService.getActiveProfile()!;
   }
@@ -80,7 +75,6 @@ export class ProfilesPage {
   }
 
   async deleteProfile(profile: Profile) {
-
     const allExpenses = localStorage.getItem('cashlio_expenses');
     const expenses = allExpenses ? JSON.parse(allExpenses) : [];
 
@@ -99,7 +93,7 @@ export class ProfilesPage {
           text: 'Delete',
           role: 'destructive',
           handler: () => {
-            const updated = this.profiles.filter(p => p.id !== profile.id);
+            const updated = this.profiles.filter((p) => p.id !== profile.id);
             this.profileService.saveProfiles(updated);
 
             if (this.activeProfile === profile.id && updated.length > 0) {

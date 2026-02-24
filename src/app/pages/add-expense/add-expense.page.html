@@ -3,16 +3,14 @@
     <ion-title>Add Transaction</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button routerLink="/tabs/profiles">
+      <ion-button routerLink="/tabs/profile">
         {{ activeProfileName }}
       </ion-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" [scrollY]="false">
-
+<ion-content class="ion-padding">
   <ion-item>
     <ion-input type="number" placeholder="Amount" [(ngModel)]="amount"></ion-input>
   </ion-item>
@@ -40,8 +38,5 @@
     <ion-datetime presentation="date" [(ngModel)]="date"></ion-datetime>
   </ion-item>
 
-  <ion-button expand="block" (click)="saveExpense()">
-    Save
-  </ion-button>
-
+  <ion-button expand="block" (click)="saveExpense()">Save</ion-button>
 </ion-content>
