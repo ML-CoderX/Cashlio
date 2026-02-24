@@ -1,17 +1,23 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
 import { RouteReuseStrategy } from '@angular/router';
+import { provideRouter } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
-
-import { routes } from './app/app.routes';
-import { AppComponent } from './app/app.component';
 import { addIcons } from 'ionicons';
-import { homeOutline, addCircleOutline, timeOutline, personOutline } from 'ionicons/icons';
+import {
+  addCircleOutline,
+  analyticsOutline,
+  homeOutline,
+  listOutline,
+  personOutline
+} from 'ionicons/icons';
+import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
 
 addIcons({
   'home-outline': homeOutline,
   'add-circle-outline': addCircleOutline,
-  'time-outline': timeOutline,
+  'list-outline': listOutline,
+  'analytics-outline': analyticsOutline,
   'person-outline': personOutline
 });
 
