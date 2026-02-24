@@ -1,7 +1,9 @@
+import { CommonModule, formatDate } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AlertController, IonicModule } from '@ionic/angular';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
 import { Expense } from '../../models/expense.model';
 import { ExpenseService } from '../../services/expense.service';
 import { ProfileService } from '../../services/profile.service';
@@ -15,6 +17,7 @@ import { ProfileService } from '../../services/profile.service';
 export class HistoryPage {
   private expenseService = inject(ExpenseService);
   private profileService = inject(ProfileService);
+  private alertCtrl = inject(AlertController);
 
   expenses: Expense[] = [];
   activeProfileName = '';
