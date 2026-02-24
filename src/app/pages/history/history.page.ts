@@ -8,6 +8,7 @@ import autoTable from 'jspdf-autotable';
 import { Expense } from '../../models/expense.model';
 import { ExpenseService } from '../../services/expense.service';
 import { ProfileService } from '../../services/profile.service';
+import { Filesystem, Directory } from '@capacitor/filesystem';
 
 @Component({
   selector: 'app-history',
@@ -103,36 +104,43 @@ export class HistoryPage {
 
     return `expense-history-${safeName || 'profile'}.pdf`;
   }
+private async downloadOrSharePdf(pdfBlob: Blob, fileName: string): Promise<void> {
 
-  private async downloadOrSharePdf(pdfBlob: Blob, fileName: string): Promise<void> {
-    if (Capacitor.isNativePlatform()) {
-      const pdfFile = new File([pdfBlob], fileName, { type: 'application/pdf' });
-      const canShareFiles =
-        typeof navigator.canShare === 'function' && navigator.canShare({ files: [pdfFile] });
+  if (Capacitor.isNativePlatform()) {
 
-      if (typeof navigator.share === 'function' && canShareFiles) {
-        await navigator.share({
-          title: fileName,
-          text: 'Cashlio expense history',
-          files: [pdfFile]
-        });
-        return;
-      }
-    }
+    const base64Data = await this.blobToBase64(pdfBlob);
 
-    const blobUrl = URL.createObjectURL(pdfBlob);
-    const link = document.createElement('a');
-    link.href = blobUrl;
-    link.download = fileName;
-    link.target = '_blank';
-    link.rel = 'noopener';
+    await Filesystem.writeFile({
+      path: fileName,
+      data: base64Data as string,
+      directory: Directory.Documents
+    });
 
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
+    const alert = await this.alertCtrl.create({
+      header: 'Saved!',
+      message: `PDF saved to Documents folder.`,
+      buttons: ['OK']
+    });
 
-    setTimeout(() => {
-      URL.revokeObjectURL(blobUrl);
-    }, 1000);
+    await alert.present();
+
+    return;
   }
+
+  // Browser fallback
+  const blobUrl = URL.createObjectURL(pdfBlob);
+  const link = document.createElement('a');
+  link.href = blobUrl;
+  link.download = fileName;
+  link.click();
+  URL.revokeObjectURL(blobUrl);
+}
+private blobToBase64(blob: Blob): Promise<string | ArrayBuffer> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = () => resolve(reader.result as string);
+    reader.readAsDataURL(blob);
+  });
+}
 }
