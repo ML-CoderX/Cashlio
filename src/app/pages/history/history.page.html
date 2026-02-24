@@ -3,18 +3,15 @@
     <ion-title>History</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button routerLink="/tabs/profiles">
+      <ion-button routerLink="/tabs/profile">
         {{ activeProfileName }}
       </ion-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" [scrollY]="false">
-
+<ion-content class="ion-padding">
   <ion-list *ngIf="expenses.length > 0">
-
     <ion-item *ngFor="let e of expenses">
       <ion-label>
         <h2>{{ e.category }} ({{ e.type }})</h2>
@@ -22,18 +19,13 @@
         <p>{{ e.date | date:'mediumDate' }}</p>
       </ion-label>
 
-      <ion-badge slot="end"
-        [color]="e.type === 'credit' ? 'success' : 'danger'">
+      <ion-badge slot="end" [color]="e.type === 'credit' ? 'success' : 'danger'">
         ₹ {{ e.amount }}
       </ion-badge>
 
-      <ion-button fill="clear" color="danger"
-        (click)="deleteExpense(e.id)">
+      <ion-button fill="clear" color="danger" (click)="deleteExpense(e.id)">
         Delete
       </ion-button>
-
     </ion-item>
-
   </ion-list>
-
 </ion-content>
