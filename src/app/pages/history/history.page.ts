@@ -1,40 +1,37 @@
-import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+import { Expense } from '../../models/expense.model';
 import { ExpenseService } from '../../services/expense.service';
 import { ProfileService } from '../../services/profile.service';
-import { Expense } from '../../models/expense.model';
-import { RouterModule } from '@angular/router';
-  
+
 @Component({
   selector: 'app-history',
   standalone: true,
   imports: [IonicModule, CommonModule, RouterModule],
-  templateUrl: './history.page.html',
+  templateUrl: './history.page.html'
 })
 export class HistoryPage {
+  private expenseService = inject(ExpenseService);
+  private profileService = inject(ProfileService);
 
   expenses: Expense[] = [];
   activeProfileName = '';
-
-  constructor(
-    private expenseService: ExpenseService,
-    private profileService: ProfileService
-  ) {}
 
   ionViewWillEnter() {
     this.loadExpenses();
     this.loadProfileName();
   }
 
-  loadExpenses() {
+  private loadExpenses() {
     this.expenses = this.expenseService.getExpenses().reverse();
   }
 
-  loadProfileName() {
+  private loadProfileName() {
     const profiles = this.profileService.getProfiles();
     const activeId = this.profileService.getActiveProfile();
-    const profile = profiles.find(p => p.id === activeId);
+    const profile = profiles.find((p) => p.id === activeId);
     this.activeProfileName = profile?.name || '';
   }
 
