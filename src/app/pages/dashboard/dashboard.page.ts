@@ -22,6 +22,14 @@ export class DashboardPage implements OnInit {
   activeProfileName = '';
 
   ngOnInit() {
+    this.loadDashboardData();
+  }
+
+  ionViewWillEnter() {
+    this.loadDashboardData();
+  }
+
+  private loadDashboardData() {
     this.loadSummary();
     this.loadProfileName();
   }
