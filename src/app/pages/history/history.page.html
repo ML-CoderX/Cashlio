@@ -2,6 +2,10 @@
   <ion-toolbar color="primary">
     <ion-title>History</ion-title>
 
+    <ion-buttons slot="start">
+      <ion-button (click)="downloadPdf()">Download PDF</ion-button>
+    </ion-buttons>
+
     <ion-buttons slot="end">
       <ion-button routerLink="/tabs/profile">
         {{ activeProfileName }}
