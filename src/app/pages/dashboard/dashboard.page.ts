@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
@@ -13,15 +13,13 @@ import { ProfileService } from '../../services/profile.service';
   styleUrls: ['./dashboard.page.scss']
 })
 export class DashboardPage implements OnInit {
+  private expenseService = inject(ExpenseService);
+  private profileService = inject(ProfileService);
+
   income = 0;
   expense = 0;
   balance = 0;
   activeProfileName = '';
-
-  constructor(
-    private expenseService: ExpenseService,
-    private profileService: ProfileService
-  ) {}
 
   ngOnInit() {
     this.loadSummary();
