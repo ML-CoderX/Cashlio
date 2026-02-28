@@ -2,6 +2,10 @@
 
 Cashlio is an Ionic + Angular personal finance app for tracking credits/debits across profiles, viewing dashboard summaries, and exporting history reports.
 
+##demo
+
+-You can find the cashlio.apk file to download.
+
 ## Features
 
 - **Dashboard** with total income, total expense, and balance
