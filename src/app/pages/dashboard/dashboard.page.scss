@@ -1,20 +1,141 @@
-ion-content {
-  --background: #121212;
+:host {
+  --surface-background: #050914;
+  --card-background: linear-gradient(135deg, #171d29 0%, #101723 100%);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f4f7ff;
+  --text-secondary: #8e99ac;
 }
 
-ion-card {
-  margin: 8px 0;
+.dashboard-header ion-toolbar {
+  --background: #090f1a;
+  --color: #dfe7f8;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --min-height: 76px;
+  padding-inline: 6px;
 }
 
-ion-card-title {
+ion-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.profile-button {
+  --background: rgba(13, 19, 33, 0.95);
+  --color: var(--text-primary);
+  --border-radius: 999px;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  font-weight: 600;
+  text-transform: none;
+  min-height: 38px;
+}
+
+.dashboard-content {
+  --background: radial-gradient(circle at 20% -10%, #111a2c 0%, var(--surface-background) 45%);
+  color: var(--text-primary);
+}
+
+.total-balance-card,
+.summary-card {
+  border-radius: 24px;
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.42);
+}
+
+.total-balance-card {
+  margin-top: 8px;
+  padding: 34px 24px;
+  text-align: center;
+}
+
+.card-label {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.total-balance-card h1 {
+  margin: 10px 0 0;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.summary-grid {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.summary-card {
+  padding: 16px;
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-header p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.summary-card h2 {
+  margin: 18px 0 0;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.1rem;
 }
 
-ion-card-content {
-  font-size: 1.5rem;
-  font-weight: bold;
+.badge.income {
+  color: #24d395;
+  background: rgba(36, 211, 149, 0.14);
 }
 
-.button-group {
-  margin-top: 12px;
+.badge.expense {
+  color: #ff6f87;
+  background: rgba(255, 111, 135, 0.15);
+}
+
+.action-buttons {
+  margin-top: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+ion-button {
+  --border-radius: 18px;
+  min-height: 58px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.add-button {
+  --background: #3f7ff2;
+  --background-hover: #4f8bfd;
+  --box-shadow: 0 10px 20px rgba(31, 92, 220, 0.4);
+}
+
+.history-button {
+  --border-width: 1px;
+  --border-color: rgba(255, 255, 255, 0.2);
+  --color: #dce4f7;
 }

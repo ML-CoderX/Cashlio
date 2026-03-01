@@ -33,5 +33,27 @@
  */
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import '@ionic/angular/css/palettes/dark.class.css';
+
+
+/* Enforce dark bottom tabs styling across modes */
+ion-tab-bar.dark-tab-bar {
+  --background: #090f1a !important;
+  --ion-tab-bar-background: #090f1a !important;
+  --border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  --color: #8e99ac !important;
+  --color-selected: #3f7ff2 !important;
+  background: #090f1a !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+ion-tab-bar.dark-tab-bar ion-tab-button {
+  --background: transparent !important;
+  --background-focused: transparent !important;
+  --background-hover: transparent !important;
+  --background-activated: transparent !important;
+}
+
+ion-tab-bar.dark-tab-bar ion-tab-button.tab-selected {
+  background: transparent !important;
+}

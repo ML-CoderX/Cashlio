@@ -1,0 +1,129 @@
+:host {
+  --add-dark-bg: #050a14;
+  --add-surface: #111722;
+  --add-border: rgba(255, 255, 255, 0.08);
+  --add-text: #f3f7ff;
+  --add-muted: #8c97ad;
+  --add-accent: #4a8fe5;
+}
+
+.add-header-toolbar {
+  --background: var(--add-accent);
+  --color: #f5f9ff;
+  --border-color: transparent;
+  min-height: 82px;
+}
+
+ion-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.profile-name-button {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+}
+
+.add-expense-content {
+  --background: var(--add-dark-bg);
+  --padding-top: 12px;
+  --padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
+
+.transaction-card {
+  background: var(--add-surface);
+  border: 1px solid var(--add-border);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  margin-bottom: 0;
+}
+
+.field-group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 2px 10px;
+  margin-bottom: 12px;
+}
+
+.field-label {
+  display: block;
+  color: var(--add-muted);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+ion-input {
+  --color: var(--add-text);
+  --placeholder-color: #5d687d;
+  --padding-start: 0;
+  --padding-end: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.field-group:not(:first-child) ion-input {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.segment-group {
+  padding-top: 2px;
+}
+
+ion-segment {
+  --background: transparent;
+}
+
+ion-segment-button {
+  --indicator-color: var(--add-accent);
+  --color: #7f89a1;
+  --color-checked: var(--add-accent);
+  min-height: 38px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+.calendar-wrap {
+  margin: 12px 0 8px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+ion-datetime {
+  --background: transparent;
+  --background-rgb: 17, 23, 34;
+  --title-color: var(--add-text);
+  --wheel-highlight-background: rgba(74, 143, 229, 0.2);
+  --wheel-fade-background-rgb: 17, 23, 34;
+  --ion-color-step-300: rgba(255, 255, 255, 0.08);
+  --ion-color-step-600: #919bb0;
+  --ion-color-primary: var(--add-accent);
+  --ion-text-color: var(--add-text);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+}
+
+.save-button-wrap {
+  position: sticky;
+  bottom: calc(56px + env(safe-area-inset-bottom));
+  padding-top: 8px;
+  background: linear-gradient(to top, rgba(5, 10, 20, 0.95), rgba(5, 10, 20, 0.75), transparent);
+  z-index: 5;
+}
+
+.save-button {
+  --background: var(--add-accent);
+  --color: #eef5ff;
+  --border-radius: 12px;
+  --box-shadow: none;
+  height: 44px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin: 0;
+}
