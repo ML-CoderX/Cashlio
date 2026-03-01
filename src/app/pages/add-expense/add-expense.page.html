@@ -1,42 +1,69 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar class="add-header-toolbar" color="primary">
     <ion-title>Add Transaction</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button routerLink="/tabs/profile">
+      <ion-button class="profile-name-button" routerLink="/tabs/profile">
         {{ activeProfileName }}
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-item>
-    <ion-input type="number" placeholder="Amount" [(ngModel)]="amount"></ion-input>
-  </ion-item>
+<ion-content class="add-expense-content ion-padding">
+  <section class="transaction-card">
+    <div class="field-group">
+      <label class="field-label" for="amount-input">Amount</label>
+      <ion-input
+        id="amount-input"
+        type="number"
+        inputmode="decimal"
+        placeholder="0.00"
+        [(ngModel)]="amount"
+      ></ion-input>
+    </div>
 
-  <ion-item>
-    <ion-segment [(ngModel)]="type">
-      <ion-segment-button value="debit">
-        <ion-label>Debit</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="credit">
-        <ion-label>Credit</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-item>
+    <div class="field-group segment-group">
+      <ion-segment [(ngModel)]="type" mode="md">
+        <ion-segment-button value="debit">
+          <ion-label>Debit</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="credit">
+          <ion-label>Credit</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
 
-  <ion-item>
-    <ion-input placeholder="Category" [(ngModel)]="category"></ion-input>
-  </ion-item>
+    <div class="field-group">
+      <label class="field-label" for="category-input">Category</label>
+      <ion-input
+        id="category-input"
+        placeholder="Select Category"
+        [(ngModel)]="category"
+      ></ion-input>
+    </div>
 
-  <ion-item>
-    <ion-input placeholder="Note" [(ngModel)]="note"></ion-input>
-  </ion-item>
+    <div class="field-group">
+      <label class="field-label" for="note-input">Note</label>
+      <ion-input
+        id="note-input"
+        placeholder="Add a note"
+        [(ngModel)]="note"
+      ></ion-input>
+    </div>
 
-  <ion-item>
-    <ion-datetime presentation="date" [(ngModel)]="date"></ion-datetime>
-  </ion-item>
+    <div class="calendar-wrap">
+      <ion-datetime
+        presentation="date"
+        prefer-wheel="false"
+        show-default-buttons="false"
+        [(ngModel)]="date"
+      ></ion-datetime>
+    </div>
 
-  <ion-button expand="block" (click)="saveExpense()">Save</ion-button>
+  </section>
+
+  <div class="save-button-wrap">
+    <ion-button class="save-button" expand="block" (click)="saveExpense()">Save</ion-button>
+  </div>
 </ion-content>
