@@ -119,3 +119,13 @@ ion-datetime {
   text-transform: uppercase;
   margin: 8px 0 0;
 }
+
+
+:host-context(body:not(.ion-palette-dark)) {
+  --add-dark-bg: #eef3ff;
+  --add-surface: #ffffff;
+  --add-border: rgba(22, 40, 88, 0.12);
+  --add-text: #101a31;
+  --add-muted: #5f6f8f;
+  --add-accent: #3f7ff2;
+}

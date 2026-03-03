@@ -39,3 +39,11 @@ ion-tab-button ion-label {
   font-size: 0.78rem;
   margin-top: 2px;
 }
+
+
+:host-context(body:not(.ion-palette-dark)) {
+  --tab-bg: #f7f9fe;
+  --tab-border: rgba(16, 32, 64, 0.12);
+  --tab-text: #5f6d8a;
+  --tab-active: #2f74ea;
+}

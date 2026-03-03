@@ -138,3 +138,24 @@ ion-segment-button::part(native) {
     font-size: 18px;
   }
 }
+
+
+:host-context(body:not(.ion-palette-dark)) {
+  --profiles-bg: #edf2ff;
+  --profiles-surface: #ffffff;
+  --profiles-card-border: rgba(16, 36, 80, 0.14);
+  --profiles-text: #13244a;
+  --profiles-muted: #5e6f91;
+}
+
+:host-context(body:not(.ion-palette-dark)) .profiles-header ion-toolbar {
+  --background: #e1ebff;
+}
+
+:host-context(body:not(.ion-palette-dark)) ion-segment {
+  background: #d6dff1;
+}
+
+:host-context(body:not(.ion-palette-dark)) ion-segment-button::part(indicator-background) {
+  background: #000000;
+}
