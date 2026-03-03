@@ -5,22 +5,27 @@ import { RouterModule } from '@angular/router';
 import { AlertController, IonicModule } from '@ionic/angular';
 import { ProfileService } from '../../services/profile.service';
 import { Profile } from '../../models/profile.model';
+import { AppTheme, ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-profiles',
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule, RouterModule],
-  templateUrl: './profiles.page.html'
+  templateUrl: './profiles.page.html',
+  styleUrl: './profiles.page.scss'
 })
 export class ProfilesPage {
   private profileService = inject(ProfileService);
   private alertCtrl = inject(AlertController);
+  private themeService = inject(ThemeService);
 
   profiles: Profile[] = [];
   activeProfile!: number;
+  selectedTheme: AppTheme = 'dark';
 
   ionViewWillEnter() {
     this.loadProfiles();
+    this.selectedTheme = this.themeService.getTheme();
   }
 
   private loadProfiles() {
@@ -31,6 +36,12 @@ export class ProfilesPage {
   switchProfile(id: number) {
     this.profileService.setActiveProfile(id);
     this.activeProfile = id;
+  }
+
+  onThemeChange(theme: string | number | null | undefined) {
+    const nextTheme: AppTheme = theme === 'light' ? 'light' : 'dark';
+    this.selectedTheme = nextTheme;
+    this.themeService.setTheme(nextTheme);
   }
 
   async addProfile() {

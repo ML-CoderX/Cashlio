@@ -1,39 +1,52 @@
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header class="dashboard-header ion-no-border">
+  <ion-toolbar>
     <ion-title>Cashlio</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button routerLink="/tabs/profile" fill="clear">
+      <ion-button class="profile-button" routerLink="/tabs/profile" fill="clear">
         {{ activeProfileName || 'Profile' }}
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Total Income</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>₹ {{ income }}</ion-card-content>
-  </ion-card>
+<ion-content class="dashboard-content ion-padding">
+  <section class="total-balance-card">
+    <p class="card-label">Total Balance</p>
+    <h1>₹{{ balance | number: '1.0-0' }}</h1>
+  </section>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Total Expense</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>₹ {{ expense }}</ion-card-content>
-  </ion-card>
+  <section class="summary-grid">
+    <article class="summary-card">
+      <div class="summary-header">
+        <p>Income</p>
+        <span class="badge income">
+          <ion-icon name="arrow-down"></ion-icon>
+        </span>
+      </div>
+      <h2>₹{{ income | number: '1.0-0' }}</h2>
+    </article>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Balance</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>₹ {{ balance }}</ion-card-content>
-  </ion-card>
+    <article class="summary-card">
+      <div class="summary-header">
+        <p>Expense</p>
+        <span class="badge expense">
+          <ion-icon name="arrow-up"></ion-icon>
+        </span>
+      </div>
+      <h2>₹{{ expense | number: '1.0-0' }}</h2>
+    </article>
+  </section>
 
-  <div class="button-group">
-    <ion-button expand="block" routerLink="/tabs/add-expense">Add Transaction</ion-button>
-    <ion-button expand="block" fill="outline" routerLink="/tabs/history">View History</ion-button>
+  <div class="action-buttons">
+    <ion-button expand="block" routerLink="/tabs/add-expense" class="add-button">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Add Transaction
+    </ion-button>
+
+    <ion-button expand="block" fill="outline" routerLink="/tabs/history" class="history-button">
+      <ion-icon slot="start" name="time"></ion-icon>
+      View History
+    </ion-button>
   </div>
 </ion-content>
