@@ -5,6 +5,22 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Theme</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-segment [value]="selectedTheme" (ionChange)="onThemeChange($event.detail.value)">
+        <ion-segment-button value="dark">
+          <ion-label>Dark</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="light">
+          <ion-label>Light</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-card-content>
+  </ion-card>
+
   <ion-list>
     <ion-item *ngFor="let profile of profiles" [color]="profile.id === activeProfile ? 'light' : ''">
       <ion-label (click)="switchProfile(profile.id)">

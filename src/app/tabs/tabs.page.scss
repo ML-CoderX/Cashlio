@@ -1,1 +1,41 @@
-/* Keep Ionic default tab layout behavior. */
+:host {
+  --tab-bg: #090f1a;
+  --tab-border: rgba(255, 255, 255, 0.08);
+  --tab-text: #8e99ac;
+  --tab-active: #3f7ff2;
+}
+
+ion-tabs,
+ion-tab-bar {
+  --background: var(--tab-bg);
+}
+
+ion-tab-bar {
+  --border: 1px solid var(--tab-border);
+  --color: var(--tab-text);
+  --color-selected: var(--tab-active);
+  --ion-tab-bar-background: var(--tab-bg);
+  border-top: 1px solid var(--tab-border);
+  min-height: 72px;
+  padding: 8px 6px calc(env(safe-area-inset-bottom, 0px) + 4px);
+}
+
+ion-tab-button {
+  --background: transparent;
+  --background-focused: transparent;
+  --background-hover: transparent;
+  --background-activated: transparent;
+  --color: var(--tab-text);
+  --color-selected: var(--tab-active);
+  --ripple-color: rgba(63, 127, 242, 0.2);
+  font-weight: 600;
+}
+
+ion-tab-button ion-icon {
+  font-size: 1.25rem;
+}
+
+ion-tab-button ion-label {
+  font-size: 0.78rem;
+  margin-top: 2px;
+}
