@@ -1,0 +1,61 @@
+:host {
+  --history-bg: #050a14;
+  --history-surface: #111722;
+  --history-border: rgba(255, 255, 255, 0.08);
+  --history-text: #eef3ff;
+  --history-muted: #8d98ad;
+  --history-accent: #4a8fe5;
+}
+
+ion-toolbar {
+  --background: var(--history-accent);
+  --color: #f5f9ff;
+}
+
+ion-content {
+  --background: var(--history-bg);
+  color: var(--history-text);
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  --background: var(--history-surface);
+  --color: var(--history-text);
+  --border-color: var(--history-border);
+  border: 1px solid var(--history-border);
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+ion-item h2 {
+  color: var(--history-text);
+}
+
+ion-item p {
+  color: var(--history-muted);
+}
+
+.profile-name-button {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.download-button {
+  --background: #f3b34a;
+  --color: #1d2330;
+  --border-radius: 12px;
+  font-weight: 700;
+}
+
+:host-context(body:not(.ion-palette-dark)) {
+  --history-bg: #eef3ff;
+  --history-surface: #ffffff;
+  --history-border: rgba(18, 40, 84, 0.12);
+  --history-text: #122246;
+  --history-muted: #5f6f8f;
+  --history-accent: #3f7ff2;
+}

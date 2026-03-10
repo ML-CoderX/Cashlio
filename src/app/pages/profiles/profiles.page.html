@@ -1,23 +1,44 @@
-<ion-header>
+<ion-header class="profiles-header">
   <ion-toolbar>
     <ion-title>Profiles</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-list>
-    <ion-item *ngFor="let profile of profiles" [color]="profile.id === activeProfile ? 'light' : ''">
-      <ion-label (click)="switchProfile(profile.id)">
-        {{ profile.name }}
-      </ion-label>
+<ion-content class="profiles-content ion-padding">
+  <section class="theme-section">
+    <h3>Theme</h3>
+    <ion-segment [value]="selectedTheme" (ionChange)="onThemeChange($event.detail.value)">
+      <ion-segment-button value="dark">
+        <ion-icon name="moon-outline"></ion-icon>
+        <ion-label>Dark</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="light">
+        <ion-icon name="sunny-outline"></ion-icon>
+        <ion-label>Light</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </section>
 
-      <ion-button fill="clear" (click)="renameProfile(profile)">Rename</ion-button>
+  <ion-list lines="none" class="profiles-list">
+    <ion-item *ngFor="let profile of profiles" [class.active]="profile.id === activeProfile" (click)="switchProfile(profile.id)">
+      <div class="profile-icon" slot="start">
+        <ion-icon name="person-outline"></ion-icon>
+      </div>
 
-      <ion-button fill="clear" color="danger" (click)="deleteProfile(profile)">
+      <ion-label>{{ profile.name }}</ion-label>
+
+      <ion-button fill="clear" class="rename-btn" (click)="$event.stopPropagation(); renameProfile(profile)">
+        Rename
+      </ion-button>
+
+      <ion-button fill="clear" class="delete-btn" (click)="$event.stopPropagation(); deleteProfile(profile)">
         Delete
       </ion-button>
     </ion-item>
   </ion-list>
 
-  <ion-button expand="block" (click)="addProfile()">+ Add Profile</ion-button>
+  <ion-button class="add-profile-btn" expand="block" (click)="addProfile()">
+    <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+    Add Profile
+  </ion-button>
 </ion-content>
