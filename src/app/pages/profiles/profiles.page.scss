@@ -124,6 +124,33 @@ ion-segment-button::part(native) {
   --color: var(--profiles-danger);
 }
 
+
+.backup-actions {
+  margin-bottom: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.backup-btn,
+.restore-btn {
+  height: 46px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.backup-btn {
+  --background: #2f74ea;
+  --border-radius: 12px;
+}
+
+.restore-btn {
+  --border-radius: 12px;
+  --border-color: rgba(255, 255, 255, 0.3);
+  --color: #dfe8ff;
+}
+
 .add-profile-btn {
   --background: var(--profiles-accent);
   --border-radius: 16px;
@@ -158,4 +185,10 @@ ion-segment-button::part(native) {
 
 :host-context(body:not(.ion-palette-dark)) ion-segment-button::part(indicator-background) {
   background: #000000;
+}
+
+
+:host-context(body:not(.ion-palette-dark)) .restore-btn {
+  --border-color: rgba(16, 36, 80, 0.25);
+  --color: #1a315f;
 }

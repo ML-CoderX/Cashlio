@@ -37,6 +37,21 @@
     </ion-item>
   </ion-list>
 
+  <section class="backup-actions">
+    <ion-button class="backup-btn" expand="block" (click)="exportBackup()">
+      <ion-icon name="download-outline" slot="start"></ion-icon>
+      Download Backup
+    </ion-button>
+
+    <ion-button class="restore-btn" expand="block" fill="outline" (click)="triggerImport(backupInput)">
+      <ion-icon name="cloud-upload-outline" slot="start"></ion-icon>
+      Restore Backup
+    </ion-button>
+
+    <input #backupInput type="file" accept="application/json" hidden (change)="importBackup($event)" />
+  </section>
+
+
   <ion-button class="add-profile-btn" expand="block" (click)="addProfile()">
     <ion-icon name="add-circle-outline" slot="start"></ion-icon>
     Add Profile
