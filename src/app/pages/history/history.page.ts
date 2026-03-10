@@ -14,7 +14,8 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
   selector: 'app-history',
   standalone: true,
   imports: [IonicModule, CommonModule, RouterModule],
-  templateUrl: './history.page.html'
+  templateUrl: './history.page.html',
+  styleUrl: './history.page.scss'
 })
 export class HistoryPage {
   private expenseService = inject(ExpenseService);

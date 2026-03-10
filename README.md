@@ -1,24 +1,56 @@
 # Cashlio
 
-Cashlio is an Ionic + Angular personal finance app for tracking credits/debits across profiles, viewing dashboard summaries, and exporting history reports.
+Cashlio is an Ionic + Angular personal finance app for tracking credits/debits across profiles, viewing summaries and charts, exporting PDF reports, and backing up/restoring data when moving to a new phone.
 
-##demo
+## Demo APK
 
--You can find the cashlio.apk file to download.
+- The repository includes `cashlio.apk` for direct Android installation/testing.
 
 ## Features
 
-- **Dashboard** with total income, total expense, and balance
-- **Add Transaction** for credit/debit entries
-- **History** view with delete support
-- **PDF export** from History with columns:
-  - Date
-  - Credit or Debit
-  - Category
-  - Amount
-  - Balance (running)
-- **Analytics** charts for income vs expense and category breakdown
-- **Profiles** support for multi-profile tracking
+- **Dashboard**
+  - Total balance hero card
+  - Income/Expense summary cards
+  - Quick actions for add/history
+- **Add Transaction**
+  - Credit/debit entry form
+  - Category, note, date selection
+- **History**
+  - Profile-specific transaction list
+  - Delete transaction support
+  - **PDF export** with running balance
+- **Analytics**
+  - Income vs Expense bar chart
+  - Expense-by-category pie chart
+- **Profiles**
+  - Multi-profile management (add/rename/delete/switch)
+  - **Theme selector** (Dark/Light)
+  - **Backup tools**
+    - Download backup JSON
+    - Restore backup JSON
+- **Persistent Theme**
+  - Theme is stored and applied app-wide
+- **Phone Migration Ready**
+  - Transfer backup file to a new device and restore all app data
+
+## Backup & Restore (New Phone Transfer)
+
+Use **Profiles → Download Backup** to generate a JSON file containing:
+
+- Profiles
+- Transactions
+- Active profile
+- Selected theme
+- Export metadata
+
+On the new phone:
+
+1. Install/open Cashlio.
+2. Go to **Profiles**.
+3. Tap **Restore Backup**.
+4. Select the backup JSON file.
+
+The app restores your data and applies the saved theme.
 
 ## Tech Stack
 
@@ -41,8 +73,6 @@ npm install
 ```bash
 npm start
 ```
-
-By default this starts Angular dev server on `http://localhost:4200`.
 
 ### 3) Build for production
 
@@ -69,9 +99,14 @@ src/app/pages/
 src/app/services/
   expense.service.ts
   profile.service.ts
+  theme.service.ts
 ```
 
-## Notes
+## Data Storage
 
-- App data is currently stored in browser `localStorage`.
-- Lint output may include pre-existing issues unrelated to recent feature work.
+- App data is stored in `localStorage`.
+- Main keys used:
+  - `cashlio_profiles`
+  - `cashlio_expenses`
+  - `cashlio_active_profile`
+  - `cashlio_theme`
